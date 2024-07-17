@@ -9,7 +9,7 @@
 <body>
   <h1>Hello, World!</h1>
   <p>This is a simple theme switcher example.</p>
-  <img id="theme-switcher" src="script/starr.png">
+  <img id="theme-switcher" src="script/light.png">
   лол
   <script src="script/main.js"></script>
 </body>
