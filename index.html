@@ -1,45 +1,155 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аттестационные материалы</title>
-  <link rel="stylesheet" href="style/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонал - Аттестация 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: var(--header-background-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header img {
+            max-height: 100px;
+        }
+
+        header button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: var(--link-color);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .buttons a {
+            padding: 10px 20px;
+            background-color: var(--button-background-color);
+            border: none;
+            color: var(--button-text-color);
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--footer-background-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        /* Light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --header-background-color: #f8f9fa;
+            --border-color: #dee2e6;
+            --link-color: #1f334b;
+            --button-background-color: #1f334b;
+            --button-text-color: #ffffff;
+            --footer-background-color: #f8f9fa;
+        }
+
+        /* Dark theme */
+        body.dark-theme {
+            --background-color: #1f334b;
+            --text-color: #ffffff;
+            --header-background-color: #1f334b;
+            --border-color: #6c757d;
+            --link-color: #adb5bd;
+            --button-background-color: #ffffff;
+            --button-text-color: #1f334b;
+            --footer-background-color: #1f334b;
+        }
+    </style>
 </head>
 <body>
-  <figure class="table" style="width:95%;">
-    <table class="ck-table-resized">
-        <colgroup>
-            <col style="width:1%;">
-            <col style="width:60%;">
-            <col style="width:7%;">
-        </colgroup>
-        <tbody>
-            <tr>
-                <td>&nbsp;</td>
-              <td style="text-align:center;"><h1><strong>Обучающие материалы</strong></h1></td>
-                <td>
-                    <img id="theme-switcher" src="script/starr.png">
-                    <script src="script/main.js"></script>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td style="text-align: center; vertical-align: middle;">
-                  <img src="https://ckbox.cloud/ce15c934afc5dc6ceb95/assets/lN563sjJUpqK/images/1000.jpeg" width="130" height="130">
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-        <tr>
-                <td>&nbsp;</td>
-                <td><a href="pages/1.html">Рабочая ссылка</a></td>
-                <td>&nbsp;</td>
-            </tr>
-        </tbody>
-    </table>
-</figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+    <header>
+        <img src="logo.jpg" alt="Логотип">
+        <button onclick="toggleTheme()">🌙</button>
+    </header>
+    <h1>Персонал - Аттестация 1</h1>
+    <ul>
+        <li><a href="#">Тема 1</a></li>
+        <li><a href="#">Тема 2</a></li>
+        <li><a href="#">Тема 3</a></li>
+    </ul>
+    <div class="buttons">
+        <a href="previous-page.html">Предыдущая страница</a>
+        <a href="home-page.html">Главная страница</a>
+        <a href="next-page.html">Следующая страница</a>
+    </div>
+    <footer>
+        <p>Информация о компании</p>
+        <p><a href="#">Ссылка 1</a> | <a href="#">Ссылка 2</a> | <a href="#">Ссылка 3</a></p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function applyTheme() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        }
+
+        // Apply the saved theme on page load
+        applyTheme();
+    </script>
 </body>
 </html>
