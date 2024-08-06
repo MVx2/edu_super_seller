@@ -4,120 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Персонал - Аттестация 1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            background-color: var(--header-background-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        header img {
-            max-height: 100px;
-        }
-
-        header button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        ul li a {
-            text-decoration: none;
-            color: var(--link-color);
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-        }
-
-        .buttons a {
-            padding: 10px 20px;
-            background-color: var(--button-background-color);
-            border: none;
-            color: var(--button-text-color);
-            text-decoration: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: var(--footer-background-color);
-            border-top: 1px solid var(--border-color);
-        }
-
-        footer a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-
-        /* Light theme */
-        :root {
-            --background-color: #ffffff;
-            --text-color: #000000;
-            --header-background-color: #f8f9fa;
-            --border-color: #dee2e6;
-            --link-color: #1f334b;
-            --button-background-color: #1f334b;
-            --button-text-color: #ffffff;
-            --footer-background-color: #f8f9fa;
-        }
-
-        /* Dark theme */
-        body.dark-theme {
-            --background-color: #1f334b;
-            --text-color: #ffffff;
-            --header-background-color: #1f334b;
-            --border-color: #6c757d;
-            --link-color: #adb5bd;
-            --button-background-color: #ffffff;
-            --button-text-color: #1f334b;
-            --footer-background-color: #1f334b;
-        }
-    </style>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+    <script src="imageViewer.js"></script>
 </head>
 <body>
+    <div class="loading-screen">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Логотип">
+        </div>
+    </div>
     <header>
-        <img src="logo.jpg" alt="Логотип">
-        <button onclick="toggleTheme()">🌙</button>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Логотип">
+        </div>
+        <div class="header-right">
+            <div class="header-controls">
+                <button onclick="toggleTheme()">🌙</button>
+                <span class="divider"></span>
+                <input type="text" id="searchInput" placeholder="Поиск..." onkeyup="search()">
+            </div>
+        </div>
     </header>
     <h1>Персонал - Аттестация 1</h1>
     <ul>
-        <li><a href="#">Тема 1</a></li>
-        <li><a href="#">Тема 2</a></li>
-        <li><a href="#">Тема 3</a></li>
+        <li class="theme">
+            <div class="theme-header" onclick="toggleContent(this)">
+                <span class="theme-title">Тема 1</span>
+                <span class="status-label">К прочтению</span>
+                <img src="menu-icon.png" alt="Меню" class="status-menu-icon" onclick="showStatusMenu(this)">
+                <div class="status-menu">
+                    <button onclick="updateStatus(this, 'Тема 1', 'read')">Прочитано</button>
+                    <button onclick="updateStatus(this, 'Тема 1', 'to-read')">К прочтению</button>
+                </div>
+            </div>
+            <div class="theme-content">Информация о теме 1<br>
+            <img src="logo.jpg" class="responsive-image" onclick="openImageViewer(this)">
+            <img src="https://upload.wikimedia.org/wikipedia/ru/thumb/d/d6/Wap_%28%D0%BF%D0%B5%D1%81%D0%BD%D1%8F%29.png/274px-Wap_%28%D0%BF%D0%B5%D1%81%D0%BD%D1%8F%29.png" class="responsive-image" onclick="openImageViewer(this)"></div>
+        </li>
+        <li class="theme">
+            <div class="theme-header" onclick="toggleContent(this)">
+                <span class="theme-title">Тема 2</span>
+                <span class="status-label">К прочтению</span>
+                <img src="menu-icon.png" alt="Меню" class="status-menu-icon" onclick="showStatusMenu(this)">
+                <div class="status-menu">
+                    <button onclick="updateStatus(this, 'Тема 2', 'read')">Прочитано</button>
+                    <button onclick="updateStatus(this, 'Тема 2', 'to-read')">К прочтению</button>
+                </div>
+            </div>
+            <div class="theme-content"><iframe width="560" height="315" src="https://www.youtube.com/embed/PH9ZQ5WWW6w?si=FRtrpMZVoLBodlz8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        </li>
+        <li class="theme">
+            <div class="theme-header" onclick="toggleContent(this)">
+                <span class="theme-title">Тема 3</span>
+                <span class="status-label">К прочтению</span>
+                <img src="menu-icon.png" alt="Меню" class="status-menu-icon" onclick="showStatusMenu(this)">
+                <div class="status-menu">
+                    <button onclick="updateStatus(this, 'Тема 3', 'read')">Прочитано</button>
+                    <button onclick="updateStatus(this, 'Тема 3', 'to-read')">К прочтению</button>
+                </div>
+            </div>
+            <div class="theme-content">Информация о теме 3</div>
+        </li>
+        <li class="theme">
+            <div class="theme-header" onclick="toggleContent(this)">
+                <span class="theme-title">Тема 4</span>
+                <span class="status-label">К прочтению</span>
+                <img src="menu-icon.png" alt="Меню" class="status-menu-icon" onclick="showStatusMenu(this)">
+                <div class="status-menu">
+                    <button onclick="updateStatus(this, 'Тема 4', 'read')">Прочитано</button>
+                    <button onclick="updateStatus(this, 'Тема 4', 'to-read')">К прочтению</button>
+                </div>
+            </div>
+            <div class="theme-content">Информация о теме 4</div>
+        </li>
     </ul>
     <div class="buttons">
         <a href="previous-page.html">Предыдущая страница</a>
@@ -129,27 +89,13 @@
         <p><a href="#">Ссылка 1</a> | <a href="#">Ссылка 2</a> | <a href="#">Ссылка 3</a></p>
     </footer>
 
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            if (document.body.classList.contains('dark-theme')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        }
+    <div id="imageViewer" class="image-viewer">
+        <span class="close-button" onclick="closeImageViewer()">&times;</span>
+        <img class="viewer-image" src="" alt="">
+        <button class="prev-button" onclick="prevImage()">&lt;</button>
+        <button class="next-button" onclick="nextImage()">&gt;</button>
+    </div>
 
-        function applyTheme() {
-            const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-            } else {
-                document.body.classList.remove('dark-theme');
-            }
-        }
-
-        // Apply the saved theme on page load
-        applyTheme();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
